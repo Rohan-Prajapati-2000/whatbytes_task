@@ -52,6 +52,19 @@ class AuthController extends GetxController {
     }
   }
 
+  void logout() async {
+    isLoading.value = true;
+    try {
+      await FirebaseAuth.instance.signOut();
+      Get.offAll(() => SignInScreen());
+      Get.snackbar("Success", "You have been logged out successfully.");
+    } catch (e) {
+      Get.snackbar("Error", "An unexpected error occurred during logout. Please try again.");
+    } finally {
+      isLoading.value = false;
+    }
+  }
+
   void _handleAuthError(FirebaseAuthException e) {
     switch (e.code) {
       case 'invalid-email':

@@ -4,12 +4,14 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:whatbytes_task/add_task_screen/add_task_screen.dart';
 import 'package:whatbytes_task/animation/loading_animation.dart';
+import 'package:whatbytes_task/controller/auth_controller.dart';
 import 'package:whatbytes_task/controller/task_controller.dart';
 import '../edit_task_screen/edit_task_screen.dart';
 import '../model/task_model.dart';
 
 class HomeScreen extends StatelessWidget {
   final taskController = Get.put(TaskController());
+  final authController = Get.put(AuthController());
   final RxString selectedFilter = 'dueDate'.obs;
 
   @override
@@ -71,13 +73,23 @@ class HomeScreen extends StatelessWidget {
                             ),
                           ),
                           const SizedBox(width: 20),
-                          Container(
-                            padding: const EdgeInsets.all(10),
-                            decoration: BoxDecoration(
-                              color: Colors.white.withOpacity(0.1),
-                              borderRadius: BorderRadius.circular(50),
-                            ),
-                            child: const Icon(FontAwesomeIcons.ellipsis, color: Colors.white, size: 18),
+                          GestureDetector(
+                            onTap: () {
+                              authController.logout();
+                            },
+                            child: Obx(() {
+                              if (authController.isLoading.value) {
+                                return LoadingAnimation();
+                              }
+                              return Container(
+                                padding: const EdgeInsets.all(10),
+                                decoration: BoxDecoration(
+                                  color: Colors.white.withOpacity(0.1),
+                                  borderRadius: BorderRadius.circular(50),
+                                ),
+                                child: const Icon(Icons.logout, color: Colors.white, size: 18),
+                              );
+                            }),
                           ),
                         ],
                       ),
