@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "599219594280",
+    "project_id": "whatsbytes-task",
+    "storage_bucket": "whatsbytes-task.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:599219594280:android:6bad125cc8fcd417ab011d",
+        "android_client_info": {
+          "package_name": "com.example.whatbytes_task"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCJPXr0z7zSswBA_qvWaBF6ABDfBNKaWrk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
